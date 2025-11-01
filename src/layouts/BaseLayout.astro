@@ -40,31 +40,31 @@ const siteName = localizedSiteNames[lang] || localizedSiteNames.ru;
     <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#D4AF37" />
     
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX');
-    </script>
+    <!-- Google tag (gtag.js) - Раскомментируйте, когда получите ID -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script> -->
+    <!-- <script> -->
+    <!--   window.dataLayer = window.dataLayer || []; -->
+    <!--   function gtag(){dataLayer.push(arguments);} -->
+    <!--   gtag('js', new Date()); -->
+    <!--   gtag('config', 'G-XXXXXXXXXX'); -->
+    <!-- </script> -->
     
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript" >
-      (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-      })(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");
-
-      ym(XXXXXXX, "init", {
-        clickmap:true,
-        trackLinks:true,
-        accurateTrackBounce:true,
-        webvisor:true
-      });
-    </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/XXXXXXX" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- Yandex.Metrika counter - Раскомментируйте, когда получите ID -->
+    <!-- <script type="text/javascript" > -->
+    <!--   (function(m,e,t,r,i,k,a){ -->
+    <!--     m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; -->
+    <!--     m[i].l=1*new Date(); -->
+    <!--     k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a) -->
+    <!--   })(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym"); -->
+    <!-- -->
+    <!--   ym(XXXXXXX, "init", { -->
+    <!--     clickmap:true, -->
+    <!--     trackLinks:true, -->
+    <!--     accurateTrackBounce:true, -->
+    <!--     webvisor:true -->
+    <!--   }); -->
+    <!-- </script> -->
+    <!-- <noscript><div><img src="https://mc.yandex.ru/watch/XXXXXXX" style="position:absolute; left:-9999px;" alt="" /></div></noscript> -->
     <!-- /Yandex.Metrika counter -->
     
     <!-- Open Graph / Facebook -->
@@ -89,6 +89,6 @@ const siteName = localizedSiteNames[lang] || localizedSiteNames.ru;
       <slot />
     </main>
     <Footer lang={lang} />
-    <script type="module" src="/scripts/observe-fade.js" client:idle></script>
+    <script type="module" src="../scripts/observe-fade.js" client:idle></script>
   </body>
 </html>
