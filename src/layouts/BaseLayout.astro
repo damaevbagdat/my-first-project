@@ -42,7 +42,7 @@ const siteName = localizedSiteNames[lang] || localizedSiteNames.ru;
     
     <!-- Google tag (gtag.js) - Раскомментируйте, когда получите ID -->
     <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script> -->
-    <!-- <script> -->
+    <!-- <script is:inline> -->
     <!--   window.dataLayer = window.dataLayer || []; -->
     <!--   function gtag(){dataLayer.push(arguments);} -->
     <!--   gtag('js', new Date()); -->
@@ -50,21 +50,21 @@ const siteName = localizedSiteNames[lang] || localizedSiteNames.ru;
     <!-- </script> -->
     
     <!-- Yandex.Metrika counter - Раскомментируйте, когда получите ID -->
-    <!-- <script type="text/javascript" > -->
+    <!-- <script type="text/javascript" is:inline> -->
     <!--   (function(m,e,t,r,i,k,a){ -->
     <!--     m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; -->
     <!--     m[i].l=1*new Date(); -->
     <!--     k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a) -->
     <!--   })(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym"); -->
     <!-- -->
-    <!--   ym(XXXXXXX, "init", { -->
+    <!--   ym(99999999, "init", { -->
     <!--     clickmap:true, -->
     <!--     trackLinks:true, -->
     <!--     accurateTrackBounce:true, -->
     <!--     webvisor:true -->
     <!--   }); -->
     <!-- </script> -->
-    <!-- <noscript><div><img src="https://mc.yandex.ru/watch/XXXXXXX" style="position:absolute; left:-9999px;" alt="" /></div></noscript> -->
+    <!-- <noscript><div><img src="https://mc.yandex.ru/watch/99999999" style="position:absolute; left:-9999px;" alt="" /></div></noscript> -->
     <!-- /Yandex.Metrika counter -->
     
     <!-- Open Graph / Facebook -->
@@ -89,6 +89,6 @@ const siteName = localizedSiteNames[lang] || localizedSiteNames.ru;
       <slot />
     </main>
     <Footer lang={lang} />
-    <script type="module" src="../scripts/observe-fade.js" client:idle></script>
+    <script type="module" src="/src/scripts/observe-fade.js" client:idle></script>
   </body>
 </html>
