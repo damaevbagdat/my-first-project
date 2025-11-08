@@ -39,7 +39,9 @@ const { lang = 'ru' } = Astro.props;
       </button>
     </div>
   </div>
-  <!-- Mobile menu overlay -->
+  <!-- Mobile menu overlay backdrop -->
+  <div id="mobile-menu-backdrop" class="mobile-menu-backdrop" aria-hidden="true"></div>
+  <!-- Mobile menu -->
   <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
     <button class="mobile-close" aria-label="Закрыть меню">×</button>
     <ul class="mobile-nav-list">
@@ -174,7 +176,8 @@ const { lang = 'ru' } = Astro.props;
 }
 
 /* Hide mobile menu by default on desktop */
-.mobile-menu {
+.mobile-menu,
+.mobile-menu-backdrop {
   display: none;
 }
 
@@ -191,6 +194,25 @@ const { lang = 'ru' } = Astro.props;
     flex-direction: column;
     gap: 4px;
     cursor: pointer;
+  }
+
+  .mobile-menu-backdrop {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 300ms ease, visibility 300ms ease;
+  }
+
+  .mobile-menu-backdrop.open {
+    opacity: 1;
+    visibility: visible;
   }
 
   .mobile-menu {
@@ -268,6 +290,7 @@ const { lang = 'ru' } = Astro.props;
   (function () {
     const burger = document.querySelector('.burger');
     const mobileMenu = document.getElementById('mobile-menu');
+    const backdrop = document.getElementById('mobile-menu-backdrop');
     const closeBtn = document.querySelector('.mobile-close');
     const mainContent = document.querySelector('main');
     let focusable = [];
@@ -275,7 +298,7 @@ const { lang = 'ru' } = Astro.props;
     let lastFocusable = null;
     let onKeyDown;
 
-    if (!burger || !mobileMenu) return;
+    if (!burger || !mobileMenu || !backdrop) return;
 
     function updateFocusable() {
       const selectors = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
@@ -285,8 +308,10 @@ const { lang = 'ru' } = Astro.props;
     }
 
     function openMenu() {
+      backdrop.classList.add('open');
       mobileMenu.classList.add('open');
       mobileMenu.setAttribute('aria-hidden', 'false');
+      backdrop.setAttribute('aria-hidden', 'false');
       burger.setAttribute('aria-expanded', 'true');
       document.documentElement.style.overflow = 'hidden';
       if (mainContent) mainContent.setAttribute('aria-hidden', 'true');
@@ -320,8 +345,10 @@ const { lang = 'ru' } = Astro.props;
     }
 
     function closeMenu() {
+      backdrop.classList.remove('open');
       mobileMenu.classList.remove('open');
       mobileMenu.setAttribute('aria-hidden', 'true');
+      backdrop.setAttribute('aria-hidden', 'true');
       burger.setAttribute('aria-expanded', 'false');
       document.documentElement.style.overflow = '';
       if (mainContent) mainContent.removeAttribute('aria-hidden');
@@ -335,6 +362,9 @@ const { lang = 'ru' } = Astro.props;
     });
 
     if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+
+    // Close menu when clicking backdrop
+    backdrop.addEventListener('click', closeMenu);
 
     mobileMenu.addEventListener('click', (e) => {
       if (e.target === mobileMenu) closeMenu();
