@@ -273,13 +273,19 @@ sudo apt install -y curl wget git unzip
 - **CI/CD**: Автоматический деплой при push в `main` или создании релиза
 - **GitHub CLI**: Настроен на сервере (аккаунт: damaevbagdat)
 - **Token Scopes**: `repo`, `workflow`, `read:org`, `write:packages`
-- **Текущая версия**: v1.0.0 (2025-11-08_20-32-35_7aeff30)
+- **Текущая версия**: v2.1.0
+- **Релизы**:
+  - v1.0.0 (2025-11-08_20-32-35_7aeff30) - Базовая версия
+  - v2.0.0 - Halcyon redesign
+  - v2.1.0 - Финальный контент и полировка
 - **Структура деплоя**:
   ```
   /var/www/alash-zan/
   ├── releases/              # Все релизы
-  │   └── 2025-11-08_20-32-35_7aeff30/  # Текущий
-  ├── current -> releases/... # Symlink на активную версию
+  │   ├── v1.0.0/           # Базовая версия
+  │   ├── v2.0.0/           # Halcyon redesign
+  │   └── v2.1.0/           # Текущий
+  ├── current -> releases/v2.1.0 # Symlink на активную версию
   └── shared/                # Shared файлы
   ```
 

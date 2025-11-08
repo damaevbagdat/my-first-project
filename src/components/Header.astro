@@ -204,14 +204,12 @@ const { lang = 'ru' } = Astro.props;
     z-index: 1001;
     padding: 2rem;
     transform: translateX(100%);
-    opacity: 0;
-    transition: transform 300ms ease, opacity 300ms ease;
+    transition: transform 300ms ease;
     pointer-events: none;
   }
 
   .mobile-menu.open {
     transform: translateX(0);
-    opacity: 1;
     pointer-events: auto;
   }
 
