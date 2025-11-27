@@ -8,7 +8,7 @@ export interface Props {
 const {
 	lang = 'ru',
 	title = 'Halcyon | Юридические услуги премиум-класса в Казахстане',
-	description = 'Halcyon - юридическая помощь премиум-класса в Казахстане. Расторжение брака под ключ, взыскание алиментов, определение графика общения с ребенком. Полная конфиденциальность и профессиональный подход.'
+	description = 'Halcyon - юридическая помощь премиум-класса в Казахстане. Расторжение брака под ключ, взыскание алиментов, определение графика общения с ребенком. Бесплатная консультация!'
 } = Astro.props;
 import '../styles/global.css';
 import '../styles/halcyon-animations.css';
@@ -30,44 +30,51 @@ const siteName = localizedSiteNames[lang] || localizedSiteNames.ru;
 <html lang={lang}>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="keywords" content="юрист Казахстан, юридические услуги Алматы, развод Казахстан, семейный юрист, корпоративное право, взыскание алиментов, расторжение брака, юридическая помощь, Halcyon" />
+    <link rel="canonical" href={Astro.url.href} />
 
-    <!-- Favicon code from RealFaviconGenerator -->
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#0a2342">
-    <meta name="msapplication-TileColor" content="#0a2342">
-    <meta name="theme-color" content="#ffffff">
-    
-    <!-- Google tag (gtag.js) - Раскомментируйте, когда получите ID -->
-    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script> -->
-    <!-- <script> -->
-    <!--   window.dataLayer = window.dataLayer || []; -->
-    <!--   function gtag(){dataLayer.push(arguments);} -->
-    <!--   gtag('js', new Date()); -->
-    <!--   gtag('config', 'G-XXXXXXXXXX'); -->
-    <!-- </script> -->
-    
-    <!-- Yandex.Metrika counter - Раскомментируйте, когда получите ID -->
-    <!-- <script type="text/javascript" > -->
-    <!--   (function(m,e,t,r,i,k,a){ -->
-    <!--     m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; -->
-    <!--     m[i].l=1*new Date(); -->
-    <!--     k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a) -->
-    <!--   })(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym"); -->
-    <!-- -->
-    <!--   ym(XXXXXXX, "init", { -->
-    <!--     clickmap:true, -->
-    <!--     trackLinks:true, -->
-    <!--     accurateTrackBounce:true, -->
-    <!--     webvisor:true -->
-    <!--   }); -->
-    <!-- </script> -->
-    <!-- <noscript><div><img src="https://mc.yandex.ru/watch/XXXXXXX" style="position:absolute; left:-9999px;" alt="" /></div></noscript> -->
+    <meta name="theme-color" content="#0a2342">
+
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://mc.yandex.ru">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://mc.yandex.ru">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-20H7T66MHY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-20H7T66MHY');
+    </script>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+      (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+      })(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");
+
+      ym(105546635, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+      });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/105546635" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
     
     <!-- Open Graph / Facebook -->
@@ -88,6 +95,87 @@ const siteName = localizedSiteNames[lang] || localizedSiteNames.ru;
     {generateHreflangs(Astro.url.pathname).map(item => (
       <link rel="alternate" href={item.href} hreflang={item.locale} />
     ))}
+    <link rel="alternate" href={new URL('/ru/', Astro.site || 'https://alash-zan.kz').href} hreflang="x-default" />
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "LegalService",
+            "@id": "https://alash-zan.kz/#legalservice",
+            "name": "Halcyon",
+            "alternateName": "Alash-Zan",
+            "url": "https://alash-zan.kz",
+            "logo": "https://alash-zan.kz/logo.png",
+            "image": "https://alash-zan.kz/og-image.jpg",
+            "description": "Юридическая фирма премиум-класса в Казахстане. Корпоративное право, судебные разбирательства, расторжение брака.",
+            "areaServed": {
+              "@type": "Country",
+              "name": "Kazakhstan"
+            },
+            "priceRange": "$$",
+            "telephone": "+7-707-997-04-11",
+            "email": "info@alash-zan.kz",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Алматы",
+              "addressRegion": "Алматинская область",
+              "addressCountry": "KZ"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "43.2220",
+              "longitude": "76.8512"
+            },
+            "openingHoursSpecification": {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+              "opens": "09:00",
+              "closes": "18:00"
+            },
+            "sameAs": [
+              "https://wa.me/77079970411",
+              "https://t.me/halci",
+              "https://instagram.com/alash_lawyer"
+            ]
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://alash-zan.kz/#organization",
+            "name": "Halcyon",
+            "alternateName": "Alash-Zan",
+            "url": "https://alash-zan.kz",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://alash-zan.kz/logo.png",
+              "width": 250,
+              "height": 60
+            },
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+7-707-997-04-11",
+              "contactType": "customer service",
+              "areaServed": "KZ",
+              "availableLanguage": ["Russian", "Kazakh", "English"]
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://alash-zan.kz/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Главная",
+                "item": "https://alash-zan.kz/"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <Header lang={lang} />
@@ -95,6 +183,6 @@ const siteName = localizedSiteNames[lang] || localizedSiteNames.ru;
       <slot />
     </main>
     <Footer lang={lang} />
-    <script src="../scripts/observe-fade.js"></script>
+    <script src="../scripts/observe-fade.js" defer></script>
   </body>
 </html>
