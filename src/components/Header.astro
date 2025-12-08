@@ -11,7 +11,9 @@ const { lang = 'ru' } = Astro.props;
 <header class="header" id="navbar">
   <div class="container">
     <div class="header-content">
-      <a href={localizePath('/', lang)} class="logo">HALCYON</a>
+      <a href={localizePath('/', lang)} class="logo">
+        <img src="/logo.png" alt="Halcyon" class="logo-img" />
+      </a>
       <nav class="nav">
         <ul class="nav-list">
           <li><a href="#divorce">{t('nav.divorce', lang)}</a></li>
@@ -89,15 +91,17 @@ const { lang = 'ru' } = Astro.props;
 }
 
 .logo {
-  font-size: 2rem;
-  font-weight: 700;
-  background: var(--gradient-accent);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  display: flex;
+  align-items: center;
   cursor: pointer;
   text-decoration: none;
   transition: transform 0.3s ease;
+}
+
+.logo-img {
+  height: 45px;
+  width: auto;
+  object-fit: contain;
 }
 
 .logo:hover {
